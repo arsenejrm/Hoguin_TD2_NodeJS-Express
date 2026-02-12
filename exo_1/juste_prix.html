@@ -8,16 +8,24 @@
             return Math.floor(Math.random() * 20)
         }
         const prix = generatePrix()
-        function justePrix() {
-            n = document.getElementById("n").value
-            console.log("tentative : " + n + ", prix : " + prix)
+        function guessPrix() {
+            const n = document.getElementById("n").value
+            const props = document.getElementById("propositions")
+            const new_prop = document.createElement("li")
+            var text = ""
+            // console.log("tentative : " + n + ", prix : " + prix)
             if (n > prix) {
                 alert("Votre proposition est supérieure au prix à deviner")
+                text += "(trop haut) > "
             } else if (n < prix) {
                 alert("Votre proposition est inférieure au prix à deviner")
+                text += "(trop bas) < "
             } else {
                 alert("Vous avez gagné ! Le prix est bien égal à " + prix)
             }
+            text += n
+            new_prop.appendChild(document.createTextNode(text))
+            props.appendChild(new_prop)
         }
     </script>
 </head>
@@ -27,7 +35,8 @@
     <div>
         <label for="n">Valeur de votre tentative : </label>
         <input type="number" name="n" id="n" min="1" max="21">
-        <input type="button" value="Soumettre" onclick="justePrix()">
+        <input type="button" value="Soumettre" onclick="guessPrix()">
     </div>
+    <ul id="propositions"></ul>
 </body>
 </html>
