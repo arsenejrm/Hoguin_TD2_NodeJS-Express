@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 1 - Juste Prix</title>
+    <script>
+        function generatePrix() {
+            return Math.floor(Math.random() * 20)
+        }
+        const prix = generatePrix()
+        function justePrix() {
+            n = document.getElementById("n").value
+            console.log("tentative : " + n + ", prix : " + prix)
+            if (n > prix) {
+                alert("Votre proposition est supérieure au prix à deviner")
+            } else if (n < prix) {
+                alert("Votre proposition est inférieure au prix à deviner")
+            } else {
+                alert("Vous avez gagné ! Le prix est bien égal à " + prix)
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Le juste prix</h1>
+    <p>Trouver un nombre compris entre 1 et 20 inclus</p>
+    <div>
+        <label for="n">Valeur de votre tentative : </label>
+        <input type="number" name="n" id="n" min="1" max="21">
+        <input type="button" value="Soumettre" onclick="justePrix()">
+    </div>
+</body>
+</html>
