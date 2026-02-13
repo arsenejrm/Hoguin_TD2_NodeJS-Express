@@ -6,24 +6,17 @@
     <script>
         function generatePrix() {
             return Math.floor(Math.random()*20)+1;
-
         }
         let prix = generatePrix()
         function guessPrix() {
-            const n = document.getElementById("n").value
+            const n = parseInt(document.getElementById("n").value)
             const props = document.getElementById("propositions")
             const new_prop = document.createElement("li")
             const sboard = document.getElementById("score_board")
             const sbody = document.getElementById("score_body")
             var text = ""
             // console.log("tentative : " + n + ", prix : " + prix)
-            if (n > prix) {
-                alert("Votre proposition est supérieure au prix à deviner")
-                text += "(trop haut) "
-            } else if (n < prix) {
-                alert("Votre proposition est inférieure au prix à deviner")
-                text += "(trop bas) "
-            } else {
+            if (n === prix) {
                 alert("Vous avez gagné ! Le prix est bien égal à " + prix)
                 const sbody_tr = document.createElement("tr")
                 const sbody_td = document.createElement("td")
@@ -31,11 +24,20 @@
                 sbody_tr.appendChild(sbody_td)
                 sbody.appendChild(sbody_tr)
                 sboard.style.display="block"
+                props.innerHTML=""
                 prix = generatePrix()
+            } else {
+                if (n > prix) {
+                    alert("Votre proposition est supérieure au prix à deviner")
+                    text += "(trop haut) "
+                } else if (n < prix) {
+                    alert("Votre proposition est inférieure au prix à deviner")
+                    text += "(trop bas) "
+                }
+                text += n
+                new_prop.appendChild(document.createTextNode(text))
+                props.appendChild(new_prop)
             }
-            text += n
-            new_prop.appendChild(document.createTextNode(text))
-            props.appendChild(new_prop)
         }
     </script>
 </head>
@@ -46,7 +48,7 @@
         <p>Trouver un nombre compris entre 1 et 20 inclus</p>
         <div>
             <label for="n">Valeur de votre tentative : </label>
-            <input type="number" name="n" id="n" min="1" max="21">
+            <input type="number" name="n" id="n" min="1" max="20">
             <input type="button" value="Soumettre" onclick="guessPrix()">
         </div>
     </div>
