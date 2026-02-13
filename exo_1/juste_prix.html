@@ -5,23 +5,33 @@
     <title>Exercice 1 - Juste Prix</title>
     <script>
         function generatePrix() {
-            return Math.floor(Math.random() * 20)
+            return Math.floor(Math.random()*20)+1;
+
         }
-        const prix = generatePrix()
+        let prix = generatePrix()
         function guessPrix() {
             const n = document.getElementById("n").value
             const props = document.getElementById("propositions")
             const new_prop = document.createElement("li")
+            const sboard = document.getElementById("score_board")
+            const sbody = document.getElementById("score_body")
             var text = ""
             // console.log("tentative : " + n + ", prix : " + prix)
             if (n > prix) {
                 alert("Votre proposition est supérieure au prix à deviner")
-                text += "(trop haut) > "
+                text += "(trop haut) "
             } else if (n < prix) {
                 alert("Votre proposition est inférieure au prix à deviner")
-                text += "(trop bas) < "
+                text += "(trop bas) "
             } else {
                 alert("Vous avez gagné ! Le prix est bien égal à " + prix)
+                const sbody_tr = document.createElement("tr")
+                const sbody_td = document.createElement("td")
+                sbody_td.appendChild(document.createTextNode(prix))
+                sbody_tr.appendChild(sbody_td)
+                sbody.appendChild(sbody_tr)
+                sboard.style.display="block"
+                prix = generatePrix()
             }
             text += n
             new_prop.appendChild(document.createTextNode(text))
@@ -30,13 +40,30 @@
     </script>
 </head>
 <body>
-    <h1>Le juste prix</h1>
-    <p>Trouver un nombre compris entre 1 et 20 inclus</p>
-    <div>
-        <label for="n">Valeur de votre tentative : </label>
-        <input type="number" name="n" id="n" min="1" max="21">
-        <input type="button" value="Soumettre" onclick="guessPrix()">
+<div id="main" style="display:flex; flex-direction: row;">
+    <div style="display:block;">
+        <h1>Le juste prix</h1>
+        <p>Trouver un nombre compris entre 1 et 20 inclus</p>
+        <div>
+            <label for="n">Valeur de votre tentative : </label>
+            <input type="number" name="n" id="n" min="1" max="21">
+            <input type="button" value="Soumettre" onclick="guessPrix()">
+        </div>
     </div>
-    <ul id="propositions"></ul>
+    <div style="display:block;">
+        <ul id="propositions"></ul>
+    </div>
+    <div style="display:block;">
+        <table id="score_board" style="display:none;">
+            <thead>
+            <tr>
+                <th>Scores précédents</th>
+            </tr>
+            </thead>
+            <tbody id="score_body">
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
