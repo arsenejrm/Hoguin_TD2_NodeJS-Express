@@ -8,19 +8,21 @@
             return Math.floor(Math.random()*20)+1;
         }
         let prix = generatePrix()
+        var guess_score = 0
         function guessPrix() {
-            const n = parseInt(document.getElementById("n").value)
             const props = document.getElementById("propositions")
-            const new_prop = document.createElement("li")
             const sboard = document.getElementById("score_board")
             const sbody = document.getElementById("score_body")
+            const n = parseInt(document.getElementById("n").value)
+            const new_prop = document.createElement("li")
             var text = ""
             // console.log("tentative : " + n + ", prix : " + prix)
             if (n === prix) {
-                alert("Vous avez gagné ! Le prix est bien égal à " + prix)
                 const sbody_tr = document.createElement("tr")
                 const sbody_td = document.createElement("td")
-                sbody_td.appendChild(document.createTextNode(prix))
+                guess_score += 1
+                alert("Vous avez gagné ! Le prix est bien égal à " + prix + ", et vous avez complété cette partie en " + guess_score)
+                sbody_td.appendChild(document.createTextNode(guess_score))
                 sbody_tr.appendChild(sbody_td)
                 sbody.appendChild(sbody_tr)
                 sboard.style.display="block"
@@ -37,6 +39,7 @@
                 text += n
                 new_prop.appendChild(document.createTextNode(text))
                 props.appendChild(new_prop)
+                guess_score += 1
             }
         }
     </script>
@@ -59,7 +62,7 @@
         <table id="score_board" style="display:none;">
             <thead>
             <tr>
-                <th>Scores précédents</th>
+                <th>Nombre de coups / partie</th>
             </tr>
             </thead>
             <tbody id="score_body">
