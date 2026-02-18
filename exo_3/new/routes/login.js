@@ -6,13 +6,13 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
 });
 
-exports.postAuth = (req,res,next) => {
+router.post('/', (req,res,next) => {
     console.log('middleware auth', req.method);
     console.log(req.body.username);
     console.log(req.body.password);
     req.session.isLog=true;
     console.log(req.session.isLog)
-    res.redirect('/');
-}
+    res.redirect('/login');
+});
 
 module.exports = router;

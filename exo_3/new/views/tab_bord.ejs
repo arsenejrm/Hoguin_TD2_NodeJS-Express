@@ -13,41 +13,7 @@
     </aside>
 
     <section class="main">
-        <?php foreach ($modules as $key => $m): ?>
-        <div id="<?php echo $m['id']; ?>" class="tabcontent">
-            <form method="POST" class="form-box">
-                <h2><?php echo $m['titre']; ?></h2>
 
-                <label><h3>Sélection du programme</h3></label>
-                <select name="script">
-                    <?php foreach ($m['scripts'] as $s): ?>
-                    <option value="<?php echo $s['file']; ?>"><?php echo $s['name']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-
-                <h3>Sélection des workers</h3>
-                <label for="pi1">Node 1</label>
-                <input type="checkbox" id="pi1" name="pi1" value="pi1">
-                <label for="pi2">Node 2</label>
-                <input type="checkbox" id="pi2" name="pi2" value="pi2">
-                <label for="pi3">Node 3</label>
-                <input type="checkbox" id="pi3" name="pi3" value="pi3">
-                <label for="pi4">Node 4</label>
-                <input type="checkbox" id="pi4" name="pi4" value="pi4">
-                <label for="cnat">Contrôleur</label>
-                <input type="checkbox" id="cnat" name="cnat" value="cnat">
-
-                <?php foreach ($m['inputs'] as $input): ?>
-                <label for="<?php echo $input['name']; ?>"><?php echo $input['label']; ?></label>
-                <input type="<?php echo $input['type']; ?>" name="<?php echo $input['name']; ?>" required>
-                <?php endforeach; ?>
-
-                <div class="resultat"><?php echo $resultat; ?></div>
-                <input type="hidden" name="module" value="<?php echo $key; ?>">
-                <button type="submit" name="lancer">Lancer</button>
-            </form>
-        </div>
-        <?php endforeach; ?>
         <div id="scalab" class="tabcontent">
             <form method="POST" class="form-box">
 
@@ -93,9 +59,7 @@
 
     }
     //au chargement de la page après une exécution du formulaire
-    window.onload = function() {
-        changeTab('<?php echo $activeTab; ?>');
-    };
+
 </script>
 
 <%- include('fragments/footer') %>

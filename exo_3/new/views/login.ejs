@@ -1,13 +1,22 @@
 <%- include('fragments/header') %>
 <%- include('fragments/barnav') %>
-<p>Identifiant ou mot de passe invalide</p>
-<p>Entrez un identifiant et un mot de passe</p>
 
-<p>Vous êtes maintenant inscrits, connectez-vous pour accéder à votre compte</p>
+<%
+if (typeof error !== 'undefined') {
+    if (error === 'invalid_credentials') {
+        %><p>Identifiant ou mot de passe invalide</p><%
+    } else if (error === 'empty_fields') {
+        %><p>Entrez un identifiant et un mot de passe</p><%
+    } else if (error === 'registration_success') {
+        %><p>Vous êtes maintenant inscrits, connectez-vous pour accéder à votre compte</p><%
+    }
+}
+%>
+
 <div class="form-container">
     <div class="form-box">
         <h1>Connexion</h1>
-        <form method='POST' action='action.php'>
+        <form method='POST' action='/login'> <!-- à modifier action -->
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required />
 
@@ -22,7 +31,7 @@
             <button type="submit" class="primary-btn full" name ='ok'>Se connecter</button>
 
 
-            <p class="center small">Pas encore inscrit ? <a href="signup.php">Inscrivez‑vous</a></p>
+            <p class="center small">Pas encore inscrit ? <a href="signup">Inscrivez‑vous</a></p>
         </form>
     </div>
 </div>
