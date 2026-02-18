@@ -1,0 +1,47 @@
+
+
+
+<%- include('fragments/header') %>
+<%- include('fragments/barnav') %>
+
+
+<div class='form-container'>
+    <div class='form-box'>
+        <h1>Inscription</h1>
+
+
+        <form method="POST" action="signup.php">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"
+                   required />
+
+            <label for="mdp">Mot de passe</label>
+            <input type="password" id="mdp" name="mdp" required />
+
+            <label for="mdp2">Confirmer le mot de passe</label>
+            <input type="password" id="mdp2" name="re_mdp" required />
+
+            <div>
+                <img src="includes/captcha.php" alt="captcha">
+            </div>
+
+            <label>Entrer le résultat de l'opération
+                <input type="text" name="resultat_captcha" required>
+            </label>
+
+            <button type="submit" class="primary-btn full">S'inscrire</button>
+        </form>
+        <!-- Affichage des erreurs -->
+        <div class="error">
+            <% if (typeof error !== 'undefined') { %>
+                <p><%= error %></p>
+            <% } %>
+        </div>
+
+
+
+    </div>
+
+
+<%- include('fragments/footer') %>
