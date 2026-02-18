@@ -6,3 +6,5 @@ Il est divisé en 3 exercices :
 - Mise en place d'un jeu de juste prix aléatoire
 - Reproduction du site de cours de M. Hoguin sur un serveur Express
 - Reproduction du site web de notre SAE sur un serveur Express
+
+Pour démarrer le serveur Express dans WebStorm, démarrer le fichier bin/www
