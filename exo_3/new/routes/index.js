@@ -4,19 +4,12 @@ var path = require("path")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (req.session.isLog) {
-    res.render('index', { title: 'Express', is_session: 'yes'});
-  } else {
-    res.render('index', { title: 'Express', is_session: 'no'});
-  }
+  res.render('index', { title: 'Express'});
 });
+
 /* GET home page. */
 router.get('/index', function(req, res, next) {
-  if (req.session.isLog) {
-    res.render('index', { title: 'Express', is_session: 'yes'});
-  } else {
-    res.render('index', { title: 'Express', is_session: 'no'});
-  }
+  res.render('index', { title: 'Express'});
 });
 
 module.exports = router;

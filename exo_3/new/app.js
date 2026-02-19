@@ -26,6 +26,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'secret',resave: false, saveUninitialized: false}));
 
+app.use((req, res, next) => {
+  res.locals.is_session = req.session.isLog || false;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/tab_bord', tab_bordRouter);
 app.use('/users', usersRouter);
