@@ -1,6 +1,9 @@
 <%- include('fragments/header') %>
 <%- include('fragments/barnav') %>
 
+
+
+
 <h1>Tableau de Bord</h1>
 <div class="container_tab_bord">
 
@@ -15,6 +18,74 @@
 
     <section class="main">
 
+
+
+        <!-- Module Nombre premier -->
+        <div id="div_prog1" class="tabcontent">
+            <h3>Module Nombre premier</h3>
+            <form method="POST" class="form-box">
+                <label>Sélection du script :</label>
+                <select name="script">
+                    <option value="prime">prime.py</option>
+                    <option value="prime_improve">prime_improve.py</option>
+                    <option value="prime_dynamic_load_balancer">prime_dynamic_load_balancer.py</option>
+                    <option value="prime_DLB_improve">prime_DLB_improve.py</option>
+                </select>
+
+                <label>Nombre premier :</label>
+                <input type="number" name="nb_prim">
+
+                <button type="submit" name="lancer">Lancer</button>
+            </form>
+        </div>
+
+        <!-- Module Pi Monte Carlo -->
+        <div id="div_prog2" class="tabcontent">
+            <h3>Module Pi Monte Carlo</h3>
+            <form method="POST" class="form-box">
+                <label>Sélection du script :</label>
+                <select name="script">
+                    <option value="MC_MPI_worker_master.py">MonteCarlo MPI Python</option>
+                    <option value="Master_worker">MonteCarlo Java</option>
+                </select>
+
+                <label>Nombre de points :</label>
+                <input type="number" name="nb_pts">
+
+                <button type="submit" name="lancer">Lancer</button>
+            </form>
+        </div>
+
+        <!-- Module Calcul Intégral Simpson -->
+        <div id="div_prog3" class="tabcontent">
+            <h3>Module Calcul Intégral Simpson</h3>
+            <form method="POST" class="form-box">
+                <label>Sélection du script :</label>
+                <select name="script">
+                    <option value="MasterSimpsonSocket.java">MasterSimpsonSocket.java</option>
+                    <option value="WorkerSimpsonSocket.java">WorkerSimpsonSocket.java</option>
+                </select>
+
+                <label>Borne A :</label>
+                <input type="number" name="a">
+
+                <label>Borne B :</label>
+                <input type="number" name="b">
+
+                <label>Nb segments :</label>
+                <input type="number" name="n">
+
+                <label>µ :</label>
+                <input type="number" name="mu">
+
+                <label>σ :</label>
+                <input type="number" name="sigma">
+
+                <button type="submit" name="lancer">Lancer</button>
+            </form>
+        </div>
+
+        <!-- Module Scalabilité -->
         <div id="scalab" class="tabcontent">
             <form method="POST" class="form-box">
 
@@ -40,6 +111,7 @@
             <img src="data:image/png;base64,<?= $img ?>" alt="Graphique">
         </div>
 
+        <! -- Module Le Juste Prix -->
         <div id="justeprix" class="tabcontent">
             <%- include('fragments/justeprix') %>
 
