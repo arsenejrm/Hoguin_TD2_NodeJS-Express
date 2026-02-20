@@ -6,6 +6,15 @@
     <div class='form-box'>
         <h1>Inscription</h1>
 
+        <div id="err_missing" style="display:none;">
+            <h3>Tous les champs de ce formulaire sont obligatoires pour procéder à l'inscription</h3>
+        </div>
+        <div id="err_meme_mdp" style="display:none;">
+            <h3>Les mots de passes ne sont pas identiques</h3>
+        </div>
+        <div id="err_not_free" style="display:none;">
+            <h3>L'adresse mail renseignée est déjà prise</h3>
+        </div>
 
         <form method="POST" action="signup">
 
@@ -16,13 +25,13 @@
             <label for="mdp">Mot de passe</label>
             <input type="password" id="mdp" name="mdp" required />
 
-            <label for="mdp2">Confirmer le mot de passe</label>
-            <input type="password" id="mdp2" name="re_mdp" required />
-
+            <label for="re_mdp">Confirmer le mot de passe</label>
+            <input type="password" id="re_mdp" name="re_mdp" required />
+            <!--
             <label>Entrer le résultat de l'opération
                 <input type="text" name="resultat_captcha" required>
             </label>
-
+            -->
             <button type="submit" class="primary-btn full">S'inscrire</button>
         </form>
         <!-- Affichage des erreurs -->

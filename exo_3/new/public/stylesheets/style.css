@@ -441,3 +441,116 @@ footer p {
   width: 100%;
   margin-bottom: 10px;
 }
+
+
+
+
+
+
+
+
+
+.justeprix {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: flex-start;
+  gap: 80px
+}
+
+/* Titre */
+.justeprix h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6a48c6;
+  margin-bottom: 10px;
+}
+
+/* Sous-texte */
+.justeprix p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Zone input */
+.justeprix .input-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Champ nombre */
+.justeprix input[type="number"] {
+  width: 120px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Bouton */
+.justeprix input[type="button"] {
+  padding: 12px 22px;
+  background: #6a48c6;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.justeprix input[type="button"]:hover {
+  background: #5533b3;
+}
+
+/* Liste des propositions */
+.justeprix #propositions {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.justeprix #propositions li {
+  background: #f3f4f8;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Tableau des scores */
+.justeprix #score_board {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.justeprix #score_board th {
+  background: #6a48c6;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+}
+
+.justeprix #score_board td {
+  background: #f3f4f8;
+  padding: 12px;
+  text-align: center;
+  font-size: 15px;
+  border-top: 1px solid #ddd;
+}

@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
-var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,15 +12,11 @@ var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var logoutRouter = require('./routes/logout');
 var redirectionRouter = require('./routes/redirection');
+var connect_db = require('./outils/database');
 
 var app = express();
 
-mongoose.connect('mongodb://22302352:6hd5kubi@192.168.24.1:27017/22302352_db')
-    .then((result)=>{
-      console.log("connexion serveur Mongo réussie");
-    } ).catch(err=>{
-  console.log("erreur de connexion");
-})
+connect_db();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,7 +43,7 @@ app.use('/logout', logoutRouter);
 app.use('/redirection', redirectionRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(async function(req, res, next) {
   next(createError(404));
 });
 

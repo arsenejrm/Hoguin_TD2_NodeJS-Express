@@ -1,57 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Exercice 1 - Juste Prix</title>
-    <script>
-        function generatePrix() {
-            return Math.floor(Math.random()*20)+1;
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+
+    function castConfettis() {
+        confetti({
+            particleCount: 600,
+            spread: 180,
+            startVelocity: 45,
+            origin: { y: 0.5 }
+        });
+    }
+    function generatePrix() {
+        return Math.floor(Math.random()*20)+1;s
+    }
+    let prix = generatePrix()
+    var guess_score = 0
+    function guessPrix() {
+        const props = document.getElementById("propositions")
+        const sboard = document.getElementById("score_board")
+        const sbody = document.getElementById("score_body")  
+        const n = parseInt(document.getElementById("n").value)
+        const new_prop = document.createElement("li")
+        var text = ""
+        // console.log("tentative : " + n + ", prix : " + prix)
+        if (isNaN(n)) {
+            alert("Veuillez entrer un nombre valide.")
+            return
         }
-        let prix = generatePrix()
-        var guess_score = 0
-        function guessPrix() {
-            const props = document.getElementById("propositions")
-            const sboard = document.getElementById("score_board")
-            const sbody = document.getElementById("score_body")
-            const n = parseInt(document.getElementById("n").value)
-            const new_prop = document.createElement("li")
-            var text = ""
-            // console.log("tentative : " + n + ", prix : " + prix)
-            if (n === prix) {
-                const sbody_tr = document.createElement("tr")
-                const sbody_td = document.createElement("td")
-                guess_score += 1
-                alert("Vous avez gagné ! Le prix est bien égal à " + prix + ", et vous avez complété cette partie en " + guess_score)
-                sbody_td.appendChild(document.createTextNode(guess_score))
-                sbody_tr.appendChild(sbody_td)
-                sbody.appendChild(sbody_tr)
-                sboard.style.display="block"
-                props.innerHTML=""
-                prix = generatePrix()
-            } else {
-                if (n > prix) {
-                    alert("Votre proposition est supérieure au prix à deviner")
-                    text += "(trop haut) "
-                } else if (n < prix) {
-                    alert("Votre proposition est inférieure au prix à deviner")
-                    text += "(trop bas) "
-                }
-                text += n
-                new_prop.appendChild(document.createTextNode(text))
-                props.appendChild(new_prop)
-                guess_score += 1
+        if (n === prix) {
+            castConfettis()
+            const sbody_tr = document.createElement("tr")
+            const sbody_td = document.createElement("td")
+            guess_score += 1
+            alert("Vous avez gagné ! Le prix est bien égal à " + prix + ", et vous avez complété cette partie en " + guess_score)
+            sbody_td.appendChild(document.createTextNode(guess_score))
+            sbody_tr.appendChild(sbody_td)
+            sbody.appendChild(sbody_tr)
+            sboard.style.display="block"
+            props.innerHTML=""
+            prix = generatePrix()
+            guess_score = 0
+
+        } else {
+            if (n > prix) {
+                alert("Votre proposition est supérieure au prix à deviner")
+                text += "(trop haut) "
+            } else if (n < prix) {
+                alert("Votre proposition est inférieure au prix à deviner")
+                text += "(trop bas) "
             }
+            text += n
+            new_prop.appendChild(document.createTextNode(text))
+            props.appendChild(new_prop)
+            props.scrollTop = props.scrollHeight;
+            guess_score += 1
         }
-    </script>
+    }
+</script>
 </head>
 <body>
-<div id="main" style="display:flex; flex-direction: row;">
+<div class="justeprix" id="main" style="display:flex; flex-direction: row;">
     <div style="display:block;">
         <h1>Le juste prix</h1>
         <p>Trouver un nombre compris entre 1 et 20 inclus</p>
         <div>
             <label for="n">Valeur de votre tentative : </label>
-            <input type="number" name="n" id="n" min="1" max="20">
+            <input type="number" name="n" id="n" min="1" max="20" placeholder="Votre proposition">
             <input type="button" value="Soumettre" onclick="guessPrix()">
         </div>
     </div>
@@ -70,5 +83,3 @@
         </table>
     </div>
 </div>
-</body>
-</html>
