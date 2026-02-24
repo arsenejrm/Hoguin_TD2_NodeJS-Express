@@ -3,7 +3,14 @@ var router = express.Router();
 
 /* GET tab_bord page. */
 router.get('/', function(req, res, next) {
-    res.render('tab_bord', { title: 'Express' });
+    if (req.session.isLog) {
+        res.render('tab_bord', {
+            title: 'Tab_bord',
+            is_session: true
+        });
+    } else {
+        res.redirect('/redirection');
+    }
 });
 
 

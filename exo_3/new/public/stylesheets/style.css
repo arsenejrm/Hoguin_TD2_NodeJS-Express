@@ -449,18 +449,18 @@ footer p {
 
 
 
-
 .justeprix {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.08);
   padding: 30px 40px;
-  max-width: 600px;
+  max-width: 900px; /* conteneur principal plus large */
+  width: 90%;       /* occupe 90% de la largeur de la page */
   margin: 0 auto;
   font-family: Arial, sans-serif;
   display: flex;
-  align-items: flex-start;
-  gap: 80px
+  flex-direction: column;
+  gap: 30px;
 }
 
 /* Titre */
@@ -484,26 +484,38 @@ footer p {
   gap: 15px;
   align-items: center;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
-/* Champ nombre */
+/* Champ nombre agrandi */
 .justeprix input[type="number"] {
-  width: 120px;
-  padding: 12px;
-  border-radius: 10px;
+  width: 250px;
+  padding: 18px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
+}
+
+/* Zone de texte */
+.justeprix textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
 }
 
 /* Bouton */
 .justeprix input[type="button"] {
-  padding: 12px 22px;
+  padding: 16px 26px;
   background: #6a48c6;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -515,20 +527,23 @@ footer p {
 
 /* Liste des propositions */
 .justeprix #propositions {
+  width: 120px;
   list-style: none;
   padding: 0;
   margin-top: 10px;
-  max-height: 180px;
+  max-height: 220px;
   overflow-y: auto;
 }
 
 .justeprix #propositions li {
   background: #f3f4f8;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 16px;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Tableau des scores */
@@ -541,17 +556,17 @@ footer p {
 .justeprix #score_board th {
   background: #6a48c6;
   color: white;
-  padding: 12px;
-  font-size: 15px;
+  padding: 14px;
+  font-size: 16px;
   font-weight: 600;
   border-radius: 10px 10px 0 0;
 }
 
 .justeprix #score_board td {
   background: #f3f4f8;
-  padding: 12px;
+  padding: 14px;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   border-top: 1px solid #ddd;
 }
 
