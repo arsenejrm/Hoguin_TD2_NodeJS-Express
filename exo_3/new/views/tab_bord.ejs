@@ -23,7 +23,7 @@
         <!-- Module Nombre premier -->
         <div id="div_prog1" class="tabcontent">
             <h3>Module Nombre premier</h3>
-            <form method="POST" class="form-box">
+            <form method="GET" class="form-box" action="/subscription">
                 <label>Sélection du script :</label>
                 <select name="script">
                     <option value="prime">prime.py</option>
@@ -42,7 +42,7 @@
         <!-- Module Pi Monte Carlo -->
         <div id="div_prog2" class="tabcontent">
             <h3>Module Pi Monte Carlo</h3>
-            <form method="POST" class="form-box">
+            <form method="GET" class="form-box" action="/subscription">
                 <label>Sélection du script :</label>
                 <select name="script">
                     <option value="MC_MPI_worker_master.py">MonteCarlo MPI Python</option>
@@ -59,7 +59,7 @@
         <!-- Module Calcul Intégral Simpson -->
         <div id="div_prog3" class="tabcontent">
             <h3>Module Calcul Intégral Simpson</h3>
-            <form method="POST" class="form-box">
+            <form method="GET" class="form-box" action="/subscription">
                 <label>Sélection du script :</label>
                 <select name="script">
                     <option value="MasterSimpsonSocket.java">MasterSimpsonSocket.java</option>
@@ -87,7 +87,7 @@
 
         <!-- Module Scalabilité -->
         <div id="scalab" class="tabcontent">
-            <form method="POST" class="form-box">
+            <form method="GET" class="form-box" action="/subscription">
 
                 <label><h3>Sélection du programme</h3></label>
                 <select name="script">
@@ -108,10 +108,10 @@
                 <input type="hidden" name="scal" value="scal">
                 <button type="submit" name="lancer">Lancer</button>
             </form>
-            <img src="data:image/png;base64,<?= $img ?>" alt="Graphique">
+            <!-- <img src="data:image/png;base64,<?= $img ?>" alt="Graphique"> -->
         </div>
 
-        <! -- Module Le Juste Prix -->
+        <!-- Module Le Juste Prix -->
         <div id="justeprix" class="tabcontent">
             <%- include('fragments/justeprix') %>
 

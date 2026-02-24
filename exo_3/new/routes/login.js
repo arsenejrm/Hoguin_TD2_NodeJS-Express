@@ -11,7 +11,8 @@ router.post('/', async (req,res,next) => {
     var data = req.body;
     if (data.email !== undefined && data.mdp !== undefined && data.email !== "" && data.mdp !== "") {
         var user_result = await User.getUserData({"email": data.email});
-        if (user_result !== null && user_result.get(0).email === data.email && user_result.get(0).mdp === data.mdp) {
+        console.log(user_result)
+        if (user_result !== null && user_result[0].email === data.email && user_result[0].mdp === data.mdp) {
             req.session.isLog=true;
         }
         res.redirect('/login');

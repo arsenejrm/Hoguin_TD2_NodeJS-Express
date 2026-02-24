@@ -12,6 +12,7 @@ var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var logoutRouter = require('./routes/logout');
 var redirectionRouter = require('./routes/redirection');
+var subscriptionRouter = require('./routes/subscription');
 var connect_db = require('./outils/database');
 
 var app = express();
@@ -41,6 +42,7 @@ app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/logout', logoutRouter);
 app.use('/redirection', redirectionRouter);
+app.use('/subscription', subscriptionRouter);
 
 // catch 404 and forward to error handler
 app.use(async function(req, res, next) {

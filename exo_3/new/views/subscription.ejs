@@ -30,7 +30,7 @@
                     <li>✔ Bugs inclus gratuitement</li>
                     <li>✖ Support technique</li>
                 </ul>
-                <button>Démarrer l’illusion</button>
+                <button onclick="startCyberPayment()">Démarrer l’illusion</button>
             </div>
 
             <div class="price-card featured">
@@ -42,7 +42,7 @@
                     <li>✔ Confettis premium 🎉</li>
                     <li>*fonctionnalité toujours en bêta</li>
                 </ul>
-                <button>Prendre tout mon argent</button>
+                <button onclick="startCyberPayment()">Prendre tout mon argent</button>
             </div>
 
             <div class="price-card">
@@ -55,10 +55,98 @@
                     <li>✔ Une licence pour chaque post-it sur votre bureau</li>
                     <li>✔ Formation “Comment perdre du temps efficacement” incluse</li>
                 </ul>
-                <button>Contacter un commercial (si par chance il travaille)</button>
+                <button onclick="startCyberPayment()">Contacter un commercial (si par chance il travaille)</button>
             </div>
+
+        </div>
 
     </section>
 </div>
+
+<!-- POPUP -->
+<div id="cyber-overlay" class="overlay hidden">
+    <div class="cyber-modal">
+        <h2>Sécurité bancaire avancée</h2>
+
+        <div class="console-box">
+            <pre id="console-text">Initialisation du protocole sécurisé…</pre>
+        </div>
+
+        <div class="loader" id="loader"></div>
+
+        <p id="final-status"></p>
+
+        <button id="close-popup" class="hidden">Fermer</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+    const messages = [
+        "Initialisation du protocole bancaire ultra-sécurisé…",
+        "Analyse de votre empreinte digitale…",
+        "Scan comportemental avancé",
+        "Connexion sécurisée avec la banque…",
+        "Chiffrement des données (ça fait sérieux) …",
+        "Validation finale du paiement…",
+        "Analyse de votre motivation : 0,2%… mais on continue quand même",
+        "Préparation du certificat d’authenticité inutile",
+        "Téléchargement des confettis de félicitations (optionnel mais obligatoire)"
+    ];
+
+    let step = 0;
+
+    const overlay = document.getElementById("cyber-overlay");
+    const consoleText = document.getElementById("console-text");
+    const loader = document.getElementById("loader");
+    const finalStatus = document.getElementById("final-status");
+    const closeBtn = document.getElementById("close-popup");
+
+    function typeText(text, cb) {
+        let i = 0;
+        const interval = setInterval(() => {
+            consoleText.textContent = text.slice(0, i) + "_";
+            i++;
+            if (i > text.length) {
+                clearInterval(interval);
+                consoleText.textContent = text;
+                cb();
+            }
+        }, 100);
+    }
+
+    function runSequence() {
+        if (step < messages.length) {
+            typeText(messages[step], () => {
+                step++;
+                setTimeout(runSequence, 500);
+            });
+        } else {
+            loader.style.display = "none";
+            finalStatus.textContent = "✅ Paiement accepté (Il n'y avait pas assez sur votre compte, mais on a tout pris en guise de compensation)";
+            confetti({
+                particleCount: 400,
+                spread: 180,
+                origin: { y: 0.6 }
+            });
+            closeBtn.classList.remove("hidden");
+        }
+    }
+
+    function startCyberPayment() {
+        step = 0;
+        consoleText.textContent = "";
+        finalStatus.textContent = "";
+        loader.style.display = "block";
+        closeBtn.classList.add("hidden");
+        overlay.classList.remove("hidden");
+        runSequence();
+    }
+
+    closeBtn.addEventListener("click", () => {
+        overlay.classList.add("hidden");
+    });
+</script>
 
 <%- include('fragments/footer') %>

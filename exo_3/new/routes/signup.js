@@ -1,6 +1,7 @@
 var express = require('express');
 var User = require("../model/modelUsers")
 var router = express.Router();
+var url = require("url");
 
 /* GET signup page. */
 router.get('/', function(req, res, next) {
@@ -14,13 +15,15 @@ router.post('/', async (req,res,next) => {
     console.log(data.mdp);
     console.log(data.re_mdp);
     if (data.email !== undefined && data.mdp !== undefined && data.re_mdp !== undefined && data.email !== "" && data.mdp !== "" && data.re_mdp !== "") {
-        if (data.mdp !== data.re_mdp) {
+        if (data.mdp === data.re_mdp) {
             var user_data = await User.getUserData({email: data.email})
-            if (user_data === []) {
+            console.log(user_data)
+            if (user_data.length === 0) {
                 const user = new User.User({email: data.email, mdp: data.mdp});
                 user.save()
                     .then((result) => { console.log("ok")})
                     .catch((err) => {console.log("erreur")});
+                res.redirect("/login");
             } else {
                 error = "not_free";
             }

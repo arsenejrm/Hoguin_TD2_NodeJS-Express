@@ -554,3 +554,225 @@ footer p {
   font-size: 15px;
   border-top: 1px solid #ddd;
 }
+
+
+.subscription-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 40px;
+}
+
+.subscription-container h1 {
+  font-size: 36px;
+  color: #6a48c6;
+  margin-bottom: 15px;
+}
+
+.subscription-container h2 {
+  font-size: 32px;
+  margin-top: 50px;
+  color: #6a48c6;
+}
+
+.subscription-container h2 span {
+  color: #9370DB;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.warning-box {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 30px auto;
+  max-width: 600px;
+  font-weight: 600;
+}
+
+.pricing-table {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 280px;
+}
+
+.price-card h3 {
+  font-size: 22px;
+  color: #6a48c6;
+}
+
+.price-card .price {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.price-card ul li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.price-card button {
+  width: 100%;
+  padding: 12px;
+  background: #6a48c6;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.price-card.featured {
+  border: 3px solid #9370DB;
+  transform: scale(1.05);
+}
+
+
+.price-card.featured button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background: linear-gradient(90deg, #f7971e, #ffd200);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.price-card.featured button:hover {
+  background: linear-gradient(90deg, #ffd200, #f7971e);
+  transform: scale(1.05);
+}
+
+/* OVERLAY - beaucoup plus sombre */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95); /* presque noir */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* MASQUE HIDDEN */
+.hidden {
+  display: none;
+}
+
+/* MODAL CYBER */
+.cyber-modal {
+  background: #0d0d1a; /* bleu très sombre presque noir */
+  border-radius: 18px;
+  padding: 35px;
+  width: 600px;
+  max-width: 90%;
+  font-family: "Courier New", monospace; /* style “console” */
+  color: #f3f4f8; /* texte clair sur sombre */
+  text-align: center;
+  box-shadow: 0px 0px 30px rgba(106,72,198,0.6);
+  animation: popIn 0.25s ease;
+  border-top: 6px solid #6a48c6;
+}
+
+/* ANIMATION POP */
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* TITRE */
+.cyber-modal h2 {
+  margin-top: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #8c7eff; /* violet cyber plus clair pour contraste */
+  text-shadow: 0 0 8px #6a48c6;
+}
+
+/* CONSOLE BOX - style terminal */
+.console-box {
+  background: #080818;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 25px 0;
+  height: 140px;
+  overflow: hidden;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  color: #33ffcc; /* vert cyber style terminal */
+  box-shadow: inset 0 0 6px #33ffcc33;
+  border: 1px solid #33ffcc55;
+}
+
+/* LOADER - roue dentée sombre */
+.loader {
+  width: 55px;
+  height: 55px;
+  border: 6px solid #22222f;
+  border-top: 6px solid #6a48c6; /* violet lumineux */
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+/* ROTATION */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* STATUS FINAL */
+#final-status {
+  font-size: 20px;
+  font-weight: 600;
+  color: #33ffcc;
+  margin-top: 10px;
+  text-shadow: 0 0 5px #33ffcc66;
+}
+
+/* BOUTON CLOSE */
+#close-popup {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #6a48c6, #8c7eff);
+  color: #f3f4f8;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(106,72,198,0.6);
+}
+
+#close-popup:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(106,72,198,0.8);
+}
