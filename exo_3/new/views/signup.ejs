@@ -6,16 +6,19 @@
     <div class='form-box'>
         <h1>Inscription</h1>
 
-        <div id="err_missing" style="display:none;">
-            <h3>Tous les champs de ce formulaire sont obligatoires pour procéder à l'inscription</h3>
-        </div>
-        <div id="err_meme_mdp" style="display:none;">
-            <h3>Les mots de passes ne sont pas identiques</h3>
-        </div>
-        <div id="err_not_free" style="display:none;">
-            <h3>L'adresse mail renseignée est déjà prise</h3>
-        </div>
-
+        <%
+        if (typeof error !== 'undefined') {
+            if (error === 4) {
+                %><div class="error"><p>Tous les champs de ce formulaire sont obligatoires pour procéder à l'inscription</p></div><%
+            } else if (error === 3) {
+                %><div class="error"><p>Les deux mots de passes saisis sont différents, ils doivent être identiques.</p></div><%
+            } else if (error === 2) {
+                %><div class="error"><p>Un utilisateur est déjà enregistré à cette adresse</p></div><%
+            } else if (error === 1) {
+                %><div class="error"><p>L'instruction envoyée à la base de données n'a pas abouti, réessayez</p></div><%
+            }
+        }
+        %>
         <form method="POST" action="/signup">
 
             <label for="email">Email</label>
@@ -34,15 +37,6 @@
             -->
             <button type="submit" class="primary-btn full">S'inscrire</button>
         </form>
-        <!-- Affichage des erreurs -->
-        <div class="error">
-            <% if (typeof error !== 'undefined') { %>
-                <p><%= error %></p>
-            <% } %>
-        </div>
-
-
-
     </div>
 
 

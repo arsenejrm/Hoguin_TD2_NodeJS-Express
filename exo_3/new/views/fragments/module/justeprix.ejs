@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
 
+    // Confettis lors d'une victoire juste pour le fun
     function castConfettis() {
         confetti({
             particleCount: 600,
@@ -9,15 +10,28 @@
             origin: { y: 0.5 }
         });
     }
+
+    /**
+     * Générer un prix aléatoire entre 1 et 20
+     * @returns {Number} Le prix aléatoire
+     */
     function generatePrix() {
         return Math.floor(Math.random()*20)+1;s
     }
     let prix = generatePrix()
     var guess_score = 0
+
+
+    /**
+     * Fonction principale du jeu.
+     * Si le prix est deviné, affiche le score et réinitialise le prix.
+     * Sinon, affiche un message d'erreur et incrémente le score.
+     * @returns {void}
+     */
     function guessPrix() {
         const props = document.getElementById("propositions")
         const sboard = document.getElementById("score_board")
-        const sbody = document.getElementById("score_body")  
+        const sbody = document.getElementById("score_body")
         const n = parseInt(document.getElementById("n").value)
         const new_prop = document.createElement("li")
         var text = ""
@@ -26,6 +40,7 @@
             alert("Veuillez entrer un nombre valide.")
             return
         }
+        // Si le prix est trouvé
         if (n === prix) {
             castConfettis()
             const sbody_tr = document.createElement("tr")
@@ -39,7 +54,7 @@
             props.innerHTML=""
             prix = generatePrix()
             guess_score = 0
-
+            // Si le prix n'est pas trouvé
         } else {
             if (n > prix) {
                 alert("Votre proposition est supérieure au prix à deviner")

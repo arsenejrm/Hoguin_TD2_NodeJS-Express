@@ -1,5 +1,5 @@
 var express = require('express');
-var User = require('../model/modelUsers.js')
+var User = require('../controllers/userController.js')
 const req = require("express/lib/request");
 var router = express.Router();
 
@@ -11,13 +11,24 @@ router.get('/', function (req, res, next) {
 
 router.post('/', async (req, res, next) => {
     var data = req.body;
-    if (data.email !== undefined && data.mdp !== undefined && data.email !== "" && data.mdp !== "") {
-        var user_result = await User.getUserData({"email": data.email});
-        if (user_result !== null && user_result[0].email === data.email && user_result[0].mdp === data.mdp) {
+    var auth_result = await User.authUser(data.email, data.mdp);
+    switch (auth_result) {
+        case 0:
             req.session.isLog = true;
             req.session.email = data.email;
-        }
-        res.redirect('/profile');
+            res.redirect('/profile');
+            break;
+        case 1:
+            res.render('login', {title: 'login', error: 1});
+            break;
+        case 2:
+            res.render('login', {title: 'login', error: 2});
+            break;
+        case 3:
+            res.render('login', {title: 'login', error: 3});
+            break;
+        default:
+            console.log("CPT dans login.js");
     }
 });
 

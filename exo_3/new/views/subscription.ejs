@@ -86,7 +86,7 @@
     const messages = [
         "Initialisation du protocole bancaire ultra-sécurisé…",
         "Analyse de votre empreinte digitale…",
-        "Scan comportemental avancé",
+        "Scan oculaire avancé",
         "Connexion sécurisée avec la banque…",
         "Chiffrement des données (ça fait sérieux) …",
         "Validation finale du paiement…",
@@ -103,6 +103,17 @@
     const finalStatus = document.getElementById("final-status");
     const closeBtn = document.getElementById("close-popup");
 
+
+
+    /**
+     * Simule un texte tapé sur le clavier en ajoutant un underscore
+     * à la fin de chaque caractère pour donner l'impression d'un
+     * texte tapé.
+     *
+     * @param {string} text : Le texte à taper
+     * @param {function} cb : La fonction à appeler lorsque le texte
+     *                    est complètement tapé.
+     */
     function typeText(text, cb) {
         let i = 0;
         const interval = setInterval(() => {
@@ -116,6 +127,11 @@
         }, 100);
     }
 
+
+
+    /**
+     * Exécute l'animation du protocole de paiement. Qui bien sûr est fausse
+     */
     function runSequence() {
         if (step < messages.length) {
             typeText(messages[step], () => {

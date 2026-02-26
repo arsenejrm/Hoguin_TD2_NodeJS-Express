@@ -1,5 +1,5 @@
 var express = require('express');
-var User = require("../model/modelUsers")
+var User = require("../controllers/userController")
 var router = express.Router();
 var url = require("url");
 
@@ -11,36 +11,26 @@ router.get('/', function(req, res, next) {
 router.post('/', async (req,res,next) => {
     var error = "";
     var data = req.body;
-    console.log(data.email);
-    console.log(data.mdp);
-    console.log(data.re_mdp);
-    if (data.email !== undefined && data.mdp !== undefined && data.re_mdp !== undefined && data.email !== "" && data.mdp !== "" && data.re_mdp !== "") {
-        if (data.mdp === data.re_mdp) {
-            var user_data = await User.getUserData({email: data.email})
-            console.log(user_data)
-            if (user_data.length === 0) {
-                const user = new User.User({email: data.email, mdp: data.mdp});
-                user.save()
-                    .then((result) => { console.log("ok")})
-                    .catch((err) => {console.log("erreur")});
-                res.redirect("/login");
-            } else {
-                error = "not_free";
-            }
-        } else {
-            error = "meme_mdp";
-        }
-    } else {
-        error = "missing";
-        console.log("y a pas tout");
-    }
-    if (error !== "") {
-        res.redirect(url.format({
-            pathname:"/signup",
-            query: {
-                "error": error
-            }
-        }));
+    var creation_result = await User.createUser(data.email, data.mdp, data.re_mdp);
+    switch (creation_result) {
+        case 0:
+            res.redirect("/login");
+            break;
+        case 1:
+            res.render('signup', {title: 'signup', error: 1});
+            break;
+        case 2:
+            res.render('signup', {title: 'signup', error: 2});
+            break;
+        case 3:
+            res.render('signup', {title: 'signup', error: 3});
+            break;
+        case 4:
+            res.render('signup', {title: 'signup', error: 4});
+            break;
+        default:
+            res.redirect("/signup");
+
     }
 });
 
